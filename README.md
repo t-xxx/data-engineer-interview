@@ -98,3 +98,9 @@
 
 ### [System Design/Distributed System](https://github.com/donnemartin/system-design-primer)
 - [ ] Locks
+
+### Machine Learning (Distributed Learning)
+- [ ] Tensorflow
+- [ ] PyTorch
+- [ ] HuggingFace
+- [ ] OpenCV
