@@ -1,0 +1,7 @@
+select deptno, empname,sal,location from dept_buck tablesample(bucket 1 out of 2 on location);
+
+select deptno, empname,sal,location from dept_buck tablesample(2 percent);
+
+select deptno, empname,sal,location from dept_buck tablesample(1M);
+
+select deptno, empname,sal,location from dept_buck tablesample(20 rows);

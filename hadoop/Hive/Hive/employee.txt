@@ -1,0 +1,6 @@
+1281,Shawn,Architect,7890,1481,10,IXZ
+1381,Jacob,Admin,4560,1481,20,POI
+1481,flink,Mgr,9580,1681,10,IXZ
+1581,Richard,Developer,1000,1681,40,LKJ
+1681,Mira,Mgr,5098,1481,10,IKZ
+1781,John,Developer,6500,1681,10,IXZ

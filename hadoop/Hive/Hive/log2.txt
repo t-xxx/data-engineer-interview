@@ -1,0 +1,16 @@
+John,1300
+Albert,1200
+Mark,1000
+Frank,1150
+Loopa,1100
+Lui,1300
+Lesa,900
+Pars,800
+leo,700
+lock,650
+pars,900
+jack,700
+fransis,1000
+system=linux.14.0.1
+version=2.0
+sub-version=3.4

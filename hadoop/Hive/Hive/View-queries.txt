@@ -1,0 +1,13 @@
+create view emp_view1 as select * from emp_tab;
+
+create view emp_view2 as select col1,col2 from emp_tab;
+
+create view if not exists emp_view3 as select col1 as id,col2 as name from emp_tab;
+
+create view emp_view4 as select emp_tab.col1,emp_tab.col2,dept_tab.col3 from emp_tab join dept_tab on (emp_tab.col6 = dept_tab.col1);
+
+alter view emp_view1 as select col1 from emp_tab;
+
+alter view emp_view1 rename to emp_view_new;
+
+drop view emp_view2;
