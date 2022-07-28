@@ -1,0 +1,7 @@
+TABLE CREATION
+
+create table if not exists table3(col1 int,col2 array<string>,col3 string,col4 int)row format delimited fields terminated by',' collection items terminated by':' lines terminated by'\n' stored as textfile;
+
+create external table if not exists table2(col1 int,col2 array<string>,col3 string,col4 int)row format delimited fields terminated by',' collection items terminated by':' lines terminated by'\n' stored as textfile location'/user/jivesh/emp';
+
+load data local inpath'/home/jivesh/files/table1'into table table2;

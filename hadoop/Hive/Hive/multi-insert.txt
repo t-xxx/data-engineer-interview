@@ -1,0 +1,5 @@
+create table developer_tab (id int,name string,desg string) stored as textfile;
+
+create table manager_tab (id int,name string,desg string) stored as textfile;
+
+from emp_tab insert into table developer_tab select col1,col2,col3 where col3 ='Developer' insert into table manager_tab select col1,col2,col3 where col3='Mgr';
