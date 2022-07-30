@@ -49,3 +49,55 @@
 
 * GPUとTPUの両方で使用できる一定の時間数を得ることができます; TPUの場合は30時間ですが、GPUの場合は週によって異なります。
 * GPU/TPUを有効に利用するためには、初めにデータセットを最適化する必要がある。そのために、小さなデータセットで少しずつチューニングしながら実行時間の短縮をはかる必要がある。こうすることで処理時間を最適化し、効率よく利用することができる。
+
+### How Kaggle competitions are run
+
+1. 目標となる指標を検討するところから始める
+コンペティションの概要ページの左メニューにあります。評価タブを選択すると、評価指標の詳細が表示されます。
+評価指標の公式、それを再現するコード、評価指標の考察などがあります。また、投稿ファイルのフォーマットに関する説明を得ます。
+
+[Meta Kaggleデータセット](https://www.kaggle.com/kaggle/meta-kaggle)
+参考として、過去7年間のコンペティションで最も頻繁に使用された評価指標を把握するために使用できます。
+（※トップ20の表が競技に使われるすべての指標をカバーしているわけではないことを考慮する必要があります。）
+
+```py
+import numpy as np
+import pandas as pd
+comps = pd.read_csv("/kaggle/input/meta-kaggle/Competitions.csv")
+evaluation = ['EvaluationAlgorithmAbbreviation',
+ 'EvaluationAlgorithmName',
+ 'EvaluationAlgorithmDescription',]
+compt = ['Title', 'EnabledDate', 'HostSegmentTitle']
+df = comps[compt + evaluation].copy()
+df['year'] = pd.to_datetime(df.EnabledDate).dt.year.values
+df['comps'] = 1
+time_select = df.year >= 2015
+competition_type_select = df.HostSegmentTitle.isin(
+['Featured', 'Research'])
+pd.pivot_table(df[time_select&competition_type_select],
+ values='comps',
+ index=['EvaluationAlgorithmAbbreviation'],
+ columns=['year'],
+ fill_value=0.0,
+ aggfunc=np.sum,
+ margins=True
+ ).sort_values(
+ by=('All'), ascending=False).iloc[1:,:].head(20)
+```
+
+※自分なりに知識を得たいのであれば、評価関数を自分でコーディングして、不完全でもいいから実験してみることです。
+
+2. 検証のデザイン
+* モデリングと提出結果の順位に注目してしまうのは良くある間違いです。
+* 結果に対する正しい検証の考えが重要です。
+   * 過学習に注意すること
+   * 検証を効果的に行う方法を決定すること
+   * 良い性能の環境を使うことも試行回数を増やし良い成果を得られることに繋がるが、正しい方向で実験の検証を繰り返すことが重要  
+
+3. 分析の作業段階
+   1. データをどのように処理するか
+   1. どのようなモデルを適用するか
+   1. モデルのアーキテクチャをどう変えるか（特に深層学習モデル）
+   1. モデルのハイパーパラメータをどのように設定するか
+   1. 予測値の後処理方法 （評価指標の決定と使用）
+      ※公開のリーダーボードが非公開のリーダーボードと完全に相関していたとしても、毎日の投稿数が限られているため（すべてのコンペティションに存在する制限）、前述のすべての領域で行うことができるテストの表面を削ることさえできません。
