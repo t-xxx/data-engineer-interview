@@ -35,3 +35,16 @@
 1. [https://www.kaggle.com/code/sudalairajkumar/winning-solutions-of-kaggle-competitions/notebook] 2010~2022
 
 1. [Kaggle Past Solutions](https://ndres.me/kaggle-past-solutions/) 2010~2019
+
+### How to use Kaggle notebook
+
+[Kaggle notebookの活用について](https://www.kaggle.com/docs/notebooks:)
+* CPU/GPUの実行時間12時間、TPUの実行時間9時間
+* 20ギガバイトの自動保存ディスクスペース ( /kaggle/working )
+* スクラッチパッドの追加ディスクスペース（/kaggle/workingの外）。
+* 現在のセッションの外には保存されません
+* GitHubを有効にするには、Notebookを開く必要があります。
+File メニューで、Link to GitHub オプションを選択します。
+※初めてリンクする場合は、リンクの許可を明示的に求められます。それ以降の 新しいノートブックにリンクする場合は、この操作は自動的に行われます。自動的に行われます。
+* GPUとTPUの両方で使用できる一定の時間数を得ることができます; TPUの場合は30時間ですが、GPUの場合は週によって異なります。
+* GPU/TPUを有効に利用するためには、初めにデータセットを最適化する必要がある。そのために、小さなデータセットで少しずつチューニングしながら実行時間の短縮をはかる必要がある。こうすることで処理時間を最適化し、効率よく利用することができる。
