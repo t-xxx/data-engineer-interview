@@ -25,6 +25,12 @@
 ### Languages
 - [ ] Python
 - [ ] Java
+    - [ ] lombok
+    - [ ] guava
+    - [ ] mockito
+    - [ ] mybatis
+    - [ ] hibernate
+    - [ ] Aspect Oriented Programming
 - [ ] Scala
 - [ ] Linux/Bash
 - [ ] SQL
